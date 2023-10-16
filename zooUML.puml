@@ -1,0 +1,36 @@
+@startuml
+'Горизонтальные уровни архитектуры:
+class lesson5.zoo.Animal {
+' Базовый класс для всех животных.
+' Содержит свойства name (имя) и age (возраст), а также метод eat()
+~ String name
+~ int age
+~ void eat()
+}
+class lesson5.zoo.NonPredator {
+' Горизонтальный уровень для травоядных.
+' Наследует класс Animal и добавляет метод graze()
+~ void graze()
+}
+class lesson5.zoo.Predator {
+' Горизонтальный уровень для хищников.
+' Наследует класс Animal и добавляет свойство huntingMethod (метод охоты) и метод hunt()
+~ String huntingMethod
+~ void hunt()
+}
+class lesson5.zoo.Lion {
+' Вертикальный срез для львов. Наследует класс Predator и добавляет метод roar()
+~ void roar()
+}
+class lesson5.zoo.Eagle {
+'Вертикальный срез для орлов. Наследует класс Predator и добавляет метод soar()
+~ void soar()
+}
+
+' Отношения:
+' Наследование:
+lesson5.zoo.Animal <|-- lesson5.zoo.NonPredator
+lesson5.zoo.Animal <|-- lesson5.zoo.Predator
+lesson5.zoo.Predator <|-- lesson5.zoo.Lion
+lesson5.zoo.Predator <|-- lesson5.zoo.Eagle
+@enduml
